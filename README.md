@@ -1,6 +1,3 @@
-# Angular-Draggable-Cards-
-Draggable &amp; Droppable Cards using Angular Materials 
-
 # we have our task 
 In home component we render all cards from the API and write a search word to search cards by name of characters
 we can drag and drop each card when rendered and i usse material design in draggable cards 

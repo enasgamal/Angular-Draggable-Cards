@@ -1,0 +1,31 @@
+<div class="container ">
+  <!-- search bar -->
+    <div class="d-flex justify-content-center ">
+        <h2 class="pr-2 pt-2">Search: </h2>
+        <input class="w-50 form-control " type="text" placeholder=" Search by name"
+        [(ngModel)]="searchByName">
+    </div> 
+    <!-- display loader with text 'Data is Loading' if data is retriving from APi -->
+    <div *ngIf="!isLoaded" class="text-center pt-5 pb-5">
+      <img *ngIf="!isLoaded" class="ml-auto pt-5 pb-5" src="assets/images/ajax-loader.gif" width="30"/> 
+       Data is Loading ... 
+    </div>
+    <!-- if data retrived from API, cards will displayed -->
+    <div *ngIf="peoples.length > 0 && isLoaded " 
+      cdkDropList
+      [cdkDropListData]="peoples"
+      class="row example-list"
+      (cdkDropListDropped)="drop($event)">
+
+      <div class="example-box" cdkDrag draggable *ngFor="let people of peoples | filterPeople:searchByName " class="card" >
+    <div >
+        <h3 class="card-header"> Name: {{people.name}}</h3>
+        <div class="card-body">
+        <h3> Url: {{people.url}}</h3>
+        <h3> Height: {{people.height}}</h3>
+        <h3> HomeWorld: {{people.homeworld}}</h3>
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
