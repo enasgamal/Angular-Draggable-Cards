@@ -4,11 +4,18 @@ import { ApiService } from './api.service';
 @Injectable({
   providedIn: 'root'
 })
-export class PeopleService {
+export class UserService {
+
   constructor(private _apiService:ApiService) { }
   
-  get()
+  get(number: any)
   {
-   return this._apiService.get("people");
+   return this._apiService.get(`people/?page=${number}`); 
   }
+
+  getData() {
+    return this._apiService.getData(`people/`);
+  }
+ 
+
 }
